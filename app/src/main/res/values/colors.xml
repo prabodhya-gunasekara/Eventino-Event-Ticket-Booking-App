@@ -4,4 +4,27 @@
     <color name="white">#FFFFFFFF</color>
     <color name="background_tint">#f5f3f4</color>
     <color name="dark_blue">#03045E</color>
+    <color name="blue_light_sky">#87CEFA</color>
+    <color name="blue_sky">#00BFFF</color>
+    <color name="blue_deep_sky">#4682B4</color>
+    <color name="blue_steel">#4682B4</color>
+    <color name="blue_cornflower">#6495ED</color>
+    <color name="blue_royal">#4169E1</color>
+    <color name="blue_medium_slate">#7B68EE</color>
+    <color name="blue_dodger">#1E90FF</color>
+    <color name="blue_powder">#B0E0E6</color>
+    <color name="blue_alice">#F0F8FF</color>
+    <color name="blue_light_steel">#B0C4DE</color>
+    <color name="blue_cadet">#5F9EA0</color>
+    <color name="blue_dark_cyan">#008B8B</color>
+    <color name="blue_teal">#008080</color>
+    <color name="blue_light_sea">#20B2AA</color>
+    <color name="blue_turquoise">#40E0D0</color>
+    <color name="blue_aquamarine">#7FFFD4</color>
+    <color name="blue_medium_turquoise">#48D1CC</color>
+    <color name="blue_dark_slate">#2F4F4F</color>
+    <color name="blue_navy">#000080</color>
+    <color name="blue_midnight">#191970</color>
+    <color name="blue_dark_cornflower">#26428B</color>
+    <color name="blue_prussian">#003153</color>
 </resources>
