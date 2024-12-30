@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "145545191400",
+    "firebase_url": "https://coursework-443700-default-rtdb.firebaseio.com",
+    "project_id": "coursework-443700",
+    "storage_bucket": "coursework-443700.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:145545191400:android:8b0b2e89819262d626ce5d",
+        "android_client_info": {
+          "package_name": "com.example.eventino_event_ticket_booking_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvf2mybhQgiBs8r5BEFbmta53vnuunJ5U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:145545191400:android:6b333e913fcef73726ce5d",
+        "android_client_info": {
+          "package_name": "com.example.eventinoapplication01"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvf2mybhQgiBs8r5BEFbmta53vnuunJ5U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:145545191400:android:585030e99783c0ee26ce5d",
+        "android_client_info": {
+          "package_name": "com.example.tickectbookingapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvf2mybhQgiBs8r5BEFbmta53vnuunJ5U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
