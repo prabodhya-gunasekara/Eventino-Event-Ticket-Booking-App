@@ -26,7 +26,7 @@ class SliderAdapter(private var sliderItem:MutableList<SliderItem>
             fun bind(sliderItem: SliderItem){
                 content?.let {
                     Glide.with(it)
-                        .load(sliderItem.image)
+                        .load(sliderItem.url)
                         .apply{RequestOptions().transform(CenterCrop(), RoundedCorners(60))}
                         .into(binding.imageSlide)
                 }
