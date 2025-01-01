@@ -1,11 +1,9 @@
 package com.example.eventino_event_ticket_booking_app
 
-import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import android.view.WindowManager
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -40,7 +38,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var upcomingEventAdapter: EventAdapter
     private lateinit var pastEventAdapter: EventAdapter
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -56,12 +53,6 @@ class MainActivity : AppCompatActivity() {
         fetchNewEventData()
         fetchUpcomingEventData()
         fetchPastEventData()
-
-        val seeAllTextView: TextView = findViewById(R.id.new_events_see_all)
-        seeAllTextView.setOnClickListener {
-            val intent = Intent(this, NewEventsActivity::class.java)
-            startActivity(intent)
-        }
     }
 
     private fun initBanner() {
@@ -69,7 +60,7 @@ class MainActivity : AppCompatActivity() {
         binding.progressBarSlider.visibility = View.VISIBLE
         myRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val lists = mutableListOf<SliderItem>()
+                val lists: MutableList<SliderItem> = mutableListOf() // Explicitly use MutableList
                 for (childSnapshot in snapshot.children) {
                     val list = childSnapshot.getValue(SliderItem::class.java)
                     if (list != null) {
@@ -124,8 +115,8 @@ class MainActivity : AppCompatActivity() {
     private fun fetchNewEventData() {
         databaseReference = database.getReference("NewEvents")
         newEventList = ArrayList()
-        newEventAdapter = EventAdapter(newEventList)
         binding.recycleViewNewEvent.layoutManager = LinearLayoutManager(this)
+        newEventAdapter = EventAdapter(newEventList) // Correct initialization
         binding.recycleViewNewEvent.adapter = newEventAdapter
 
         databaseReference.addValueEventListener(object : ValueEventListener {
@@ -151,8 +142,8 @@ class MainActivity : AppCompatActivity() {
     private fun fetchUpcomingEventData() {
         databaseReference = database.getReference("UpcomingEvents")
         upcomingEventList = ArrayList()
-        upcomingEventAdapter = EventAdapter(upcomingEventList)
         binding.recycleViewUpcomingEvent.layoutManager = LinearLayoutManager(this)
+        upcomingEventAdapter = EventAdapter(upcomingEventList) // Correct initialization
         binding.recycleViewUpcomingEvent.adapter = upcomingEventAdapter
 
         databaseReference.addValueEventListener(object : ValueEventListener {
@@ -178,7 +169,7 @@ class MainActivity : AppCompatActivity() {
     private fun fetchPastEventData() {
         databaseReference = database.getReference("PastEvents")
         pastEventList = ArrayList()
-        pastEventAdapter = EventAdapter(pastEventList)
+        pastEventAdapter = EventAdapter(pastEventList) // Correct initialization
         binding.recycleViewPastEvent.layoutManager = LinearLayoutManager(this)
         binding.recycleViewPastEvent.adapter = pastEventAdapter
 
