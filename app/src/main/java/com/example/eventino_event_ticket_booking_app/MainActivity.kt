@@ -1,17 +1,22 @@
 package com.example.eventino_event_ticket_booking_app
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
-import android.view.Window
 import android.view.WindowManager
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
+import com.example.eventino_event_ticket_booking_app.adapter.EventAdapter
 import com.example.eventino_event_ticket_booking_app.adapter.SliderAdapter
 import com.example.eventino_event_ticket_booking_app.databinding.ActivityMainBinding
+import com.example.eventino_event_ticket_booking_app.models.EventModel
 import com.example.eventino_event_ticket_booking_app.models.SliderItem
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -19,79 +24,91 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
-
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var  database: FirebaseDatabase
-    private val sliderHandler=Handler()
-    private val sliderRunnable= Runnable{
-        binding.viewpage2.currentItem=binding.viewpage2.currentItem+1
+    private lateinit var database: FirebaseDatabase
+    private val sliderHandler = Handler()
+    private val sliderRunnable = Runnable { binding.viewpage2.currentItem = binding.viewpage2.currentItem + 1 }
+    private lateinit var databaseReference: DatabaseReference
 
-    }
+    private lateinit var newEventList: ArrayList<EventModel>
+    private lateinit var upcomingEventList: ArrayList<EventModel>
+    private lateinit var pastEventList: ArrayList<EventModel>
+
+    private lateinit var newEventAdapter: EventAdapter
+    private lateinit var upcomingEventAdapter: EventAdapter
+    private lateinit var pastEventAdapter: EventAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding=ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        database=FirebaseDatabase.getInstance()
+        database = FirebaseDatabase.getInstance()
 
         window.setFlags(
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
         initBanner()
+        fetchNewEventData()
+        fetchUpcomingEventData()
+        fetchPastEventData()
+
+        val seeAllTextView: TextView = findViewById(R.id.new_events_see_all)
+        seeAllTextView.setOnClickListener {
+            val intent = Intent(this, NewEventsActivity::class.java)
+            startActivity(intent)
+        }
     }
-    private fun initBanner(){
-        val myRef:DatabaseReference=database.getReference("Banners")
-        binding.progressBarSlider.visibility=View.VISIBLE
-        myRef.addListenerForSingleValueEvent(object :ValueEventListener{
+
+    private fun initBanner() {
+        val myRef: DatabaseReference = database.getReference("Banners")
+        binding.progressBarSlider.visibility = View.VISIBLE
+        myRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val lists= mutableListOf<SliderItem>()
-                for (childSnapshot in snapshot.children){
-                    val list =childSnapshot.getValue(SliderItem::class.java)
-                    if (list!=null){
+                val lists = mutableListOf<SliderItem>()
+                for (childSnapshot in snapshot.children) {
+                    val list = childSnapshot.getValue(SliderItem::class.java)
+                    if (list != null) {
                         lists.add(list)
                     }
                 }
 
-                binding.progressBarSlider.visibility=View.GONE
+                binding.progressBarSlider.visibility = View.GONE
                 banners(lists)
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                Toast.makeText(applicationContext, "Failed to load banners", Toast.LENGTH_SHORT).show()
             }
-
         })
     }
 
     private fun banners(lists: MutableList<SliderItem>) {
-        binding.viewpage2.adapter=SliderAdapter(lists,binding.viewpage2)
-        binding.viewpage2.offscreenPageLimit=3
-        binding.viewpage2.clipToPadding=false
-        binding.viewpage2.clipChildren=false
-        binding.viewpage2.getChildAt(0).overScrollMode= RecyclerView.OVER_SCROLL_NEVER
+        binding.viewpage2.adapter = SliderAdapter(lists, binding.viewpage2)
+        binding.viewpage2.offscreenPageLimit = 3
+        binding.viewpage2.clipToPadding = false
+        binding.viewpage2.clipChildren = false
+        binding.viewpage2.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
 
-
-        val compositePageTransformer=CompositePageTransformer().apply {
+        val compositePageTransformer = CompositePageTransformer().apply {
             addTransformer(MarginPageTransformer(40))
             addTransformer(ViewPager2.PageTransformer { page, position ->
-                val r=1-Math.abs(position)
-                page.scaleY=0.85f+r*0.15f
-
+                val r = 1 - Math.abs(position)
+                page.scaleY = 0.85f + r * 0.15f
             })
         }
         binding.viewpage2.setPageTransformer(compositePageTransformer)
-        binding.viewpage2.currentItem=1
+        binding.viewpage2.currentItem = 1
         binding.viewpage2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 sliderHandler.removeCallbacks(sliderRunnable)
             }
         })
-
     }
 
     override fun onPause() {
@@ -101,7 +118,87 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        sliderHandler.postDelayed(sliderRunnable,2000)
+        sliderHandler.postDelayed(sliderRunnable, 2000)
+    }
 
+    private fun fetchNewEventData() {
+        databaseReference = database.getReference("NewEvents")
+        newEventList = ArrayList()
+        newEventAdapter = EventAdapter(newEventList)
+        binding.recycleViewNewEvent.layoutManager = LinearLayoutManager(this)
+        binding.recycleViewNewEvent.adapter = newEventAdapter
+
+        databaseReference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                binding.progressbarnewevent.visibility = View.GONE
+                newEventList.clear()
+                var count = 0
+                for (childSnapshot in snapshot.children) {
+                    if (count >= 3) break
+                    val event = childSnapshot.getValue(EventModel::class.java)
+                    event?.let { newEventList.add(it) }
+                    count++
+                }
+                newEventAdapter.notifyDataSetChanged()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(applicationContext, "Failed to load new events", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun fetchUpcomingEventData() {
+        databaseReference = database.getReference("UpcomingEvents")
+        upcomingEventList = ArrayList()
+        upcomingEventAdapter = EventAdapter(upcomingEventList)
+        binding.recycleViewUpcomingEvent.layoutManager = LinearLayoutManager(this)
+        binding.recycleViewUpcomingEvent.adapter = upcomingEventAdapter
+
+        databaseReference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                binding.progressbarupcomingevent.visibility = View.GONE
+                upcomingEventList.clear()
+                var count = 0
+                for (childSnapshot in snapshot.children) {
+                    if (count >= 3) break
+                    val event = childSnapshot.getValue(EventModel::class.java)
+                    event?.let { upcomingEventList.add(it) }
+                    count++
+                }
+                upcomingEventAdapter.notifyDataSetChanged()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(applicationContext, "Failed to load upcoming events", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun fetchPastEventData() {
+        databaseReference = database.getReference("PastEvents")
+        pastEventList = ArrayList()
+        pastEventAdapter = EventAdapter(pastEventList)
+        binding.recycleViewPastEvent.layoutManager = LinearLayoutManager(this)
+        binding.recycleViewPastEvent.adapter = pastEventAdapter
+
+        databaseReference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                binding.progressbarpastevent.visibility = View.GONE
+                pastEventList.clear()
+                var count = 0
+                for (childSnapshot in snapshot.children) {
+                    if (count >= 3) break
+                    val event = childSnapshot.getValue(EventModel::class.java)
+                    event?.let { pastEventList.add(it) }
+                    count++
+                }
+                pastEventAdapter.notifyDataSetChanged()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(applicationContext, "Failed to load past events", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 }
