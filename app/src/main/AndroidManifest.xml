@@ -13,21 +13,56 @@
         android:theme="@style/Theme.EventinoEventTicketBookingApp"
         tools:targetApi="31">
         <activity
+            android:name=".UpcomingEventsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UpcomingEventDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SignInActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ReviewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PastEventsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PastEventDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OrganizersActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OrganizerDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BookedEventDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".LoadActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".BookedEventsActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"/>
-
+            android:exported="true" />
     </application>
 
 </manifest>
