@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/explore"
+        android:icon="@drawable/bottom_bar_explore"
+        android:title="Explore"
+        app:cnb_iconColor="@color/white"
+        />
+    <item
+        android:id="@+id/events"
+        android:icon="@drawable/bottom_bar_event"
+        android:title="Events"
+        app:cnb_iconColor="@color/white"/>
+    <item
+        android:id="@+id/review"
+        android:icon="@drawable/bottom_bar_review"
+        android:title="Review"
+        app:cnb_iconColor="@color/white"/>
+    <item
+        android:id="@+id/contact"
+        android:icon="@drawable/bottom_bar_contact"
+        android:title="Contact"
+        app:cnb_iconColor="@color/white"/>
+
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/bottom_bar_user"
+        android:title="Profile"
+        app:cnb_iconColor="@color/white"/>
+</menu>

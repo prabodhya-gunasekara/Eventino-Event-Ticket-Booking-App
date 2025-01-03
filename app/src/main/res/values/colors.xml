@@ -2,6 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="search_bar_blue">#AAC7F9</color>
     <color name="background_tint">#f5f3f4</color>
     <color name="dark_blue">#03045E</color>
     <color name="blue_light_sky">#87CEFA</color>

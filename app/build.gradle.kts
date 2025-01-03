@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -51,4 +52,8 @@ dependencies {
 
     implementation("com.github.bumptech.glide:glide:4.16.0") //Loads images from a URL, resources, or assets.
     implementation("com.google.code.gson:gson:2.10.1") //JSON parsing and serialization.
+    implementation("com.github.ismaeldivita:chip-navigation-bar:1.4.0")
+    implementation("com.github.Dimezis:BlurView:version-2.0.3")
+    implementation ("com.google.firebase:firebase-database:21.0.0")
+
 }
