@@ -11,6 +11,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.example.eventino_event_ticket_booking_app.databinding.ViewholderSliderBinding
 import com.example.eventino_event_ticket_booking_app.models.SliderItem
+import com.google.ai.client.generativeai.common.RequestOptions
 
 class SliderAdapter(private var sliderItem:MutableList<SliderItem>
 ,private val viewPager2:ViewPager2
