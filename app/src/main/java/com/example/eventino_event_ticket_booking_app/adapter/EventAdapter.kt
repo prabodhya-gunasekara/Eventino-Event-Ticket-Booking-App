@@ -30,7 +30,6 @@ class EventAdapter(private val eventList: List<EventModel>) :
 
         Glide.with(holder.eventImage.context)
             .load(event.imgURL)
-            .placeholder(R.drawable.search_bg_dashboard)
             .into(holder.eventImage)
 
         holder.eventName.text = event.eventName
