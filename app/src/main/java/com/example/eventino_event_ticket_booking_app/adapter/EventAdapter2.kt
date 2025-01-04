@@ -18,6 +18,7 @@ class EventAdapter2(
     private val events: List<Event>
 ) : RecyclerView.Adapter<EventAdapter2.EventViewHolder>() {
 
+    // ViewHolder class for holding views for each item
     inner class EventViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val tvEventName: TextView = view.findViewById(R.id.event_name)
         val tvEventDate: TextView = view.findViewById(R.id.event_date_time)
@@ -31,20 +32,25 @@ class EventAdapter2(
 
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
         val event = events[position]
+
+        // Set event name
         holder.tvEventName.text = event.eventName
 
+        // Format and set event date
         val sdf = SimpleDateFormat("dd MMM yyyy, hh:mm a", Locale.getDefault())
         event.eventDate?.let {
             holder.tvEventDate.text = sdf.format(it.toDate())
         }
 
+        // Set event details
         holder.tvEventAbout.text = event.aboutEvent
 
+        // Handle item click to navigate to details activity
         holder.itemView.setOnClickListener {
             val intent = Intent(context, BookedEventDetailsActivity::class.java)
             intent.putExtra("eventId", event.eventId)
             intent.putExtra("eventName", event.eventName)
-            intent.putExtra("eventDate", event.eventDate?.toDate()?.time)
+            intent.putExtra("eventDate", event.eventDate?.toDate()?.time) // Convert Timestamp to milliseconds
             intent.putExtra("organizer", event.organizer)
             intent.putExtra("location", event.location)
             intent.putExtra("aboutEvent", event.aboutEvent)
