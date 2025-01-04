@@ -1,10 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileActivity">
+    android:padding="16dp"
+    android:id="@+id/main_profile">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Back Icon Section -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:id="@+id/back_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/back"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:contentDescription="Back Icon" />
+
+        </RelativeLayout>
+
+        <!-- Profile Section -->
+        <ImageView
+            android:id="@+id/profile_picture"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/profile"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"
+            />
+
+        <TextView
+            android:id="@+id/profile_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mary Nguyen"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:id="@+id/profile_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="marynguyen@gmail.com"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/profile_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="+1 123 456 7890"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/profile_country"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="United States"
+            android:textSize="16sp"
+            android:layout_marginBottom="16dp" />
+
+        <Button
+            android:id="@+id/edit_profile_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit Profile"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/blue_navy"
+            android:textColor="@color/white"
+            android:layout_marginBottom="32dp" />
+
+        <!-- Navigation and Other Buttons -->
+        <Button
+            android:id="@+id/home_button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Home"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="#C1C1E6"
+            android:textColor="#03035D"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/change_password_button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Change Password"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="#C1C1E6"
+            android:textColor="#03035D"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/privacy_button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Privacy and Policies"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="#C1C1E6"
+            android:textColor="#03035D"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/about_app_button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="About App"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="#C1C1E6"
+            android:textColor="#03035D"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/logout_button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Log Out"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="#C1C1E6"
+            android:textColor="#03035D"
+            android:textStyle="bold" />
+    </LinearLayout>
+</ScrollView>
