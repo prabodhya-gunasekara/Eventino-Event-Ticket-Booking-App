@@ -1,20 +1,21 @@
 package com.example.eventino_event_ticket_booking_app
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
-class PastEventDetailsActivity : AppCompatActivity() {
+class ViewPastEventDetailsActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_past_event_details)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        val btnReview: Button = findViewById(R.id.reviewButton)
+
+        btnReview.setOnClickListener {
+            val intent = Intent(this, ReviewActivity::class.java)
+            startActivity(intent)
         }
     }
 }
