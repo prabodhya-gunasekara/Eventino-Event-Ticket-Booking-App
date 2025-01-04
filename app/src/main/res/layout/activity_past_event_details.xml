@@ -1,10 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PastEventDetailsActivity">
+    android:background="#FFFFFF"
+    tools:context=".activity_view_past_event_details">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_event_poster" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|top"
+                android:layout_margin="16dp"
+                android:padding="8dp"
+                android:text="Event Details"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:background="#66000000"
+
+                android:gravity="center_vertical" />
+        </FrameLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="International Band Music Concert"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#000000" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_event_date"
+                android:contentDescription="Date Icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="14 December, 2021\nTuesday, 4:00 PM - 9:00 PM"
+                android:textSize="14sp"
+                android:textColor="#757575" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_location"
+                android:contentDescription="Location Icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Gala Convention Center\n36 Guild Street London, UK"
+                android:textSize="14sp"
+                android:textColor="#757575" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/img_organizer"
+                android:contentDescription="Organizer Icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Ashfaq Sayem\nOrganizer"
+                android:textSize="14sp"
+                android:textColor="#757575" />
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="About Event"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#000000" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Enjoy your favorite dish and a lovely time with friends and family. Food from local food trucks will be available for everyone to enjoy."
+            android:textSize="14sp"
+            android:textColor="#757575" />
+
+
+        <Button
+            android:id="@+id/reviewButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="REVIEW"
+            android:textAllCaps="false"
+            android:backgroundTint="#3F51B5"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+</ScrollView>
