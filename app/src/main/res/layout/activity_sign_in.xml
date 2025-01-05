@@ -12,14 +12,13 @@
         android:orientation="vertical"
         android:gravity="center">
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
             android:layout_marginTop="48dp"
-            android:layout_marginBottom="32dp">
+            android:layout_marginBottom="10dp">
 
             <ImageView
                 android:layout_width="120dp"
@@ -31,12 +30,19 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="EVENTINO"
-                android:textColor="#3F51B5"
-                android:textSize="24sp"
+                android:text="Welcome Back"
+                android:textSize="28sp"
                 android:textStyle="bold"
-                android:layout_marginTop="16dp"
-                android:gravity="center" />
+                android:textColor="@color/black"
+                android:layout_marginBottom="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enter your details below"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#1B1B1B"/>
         </LinearLayout>
 
 
@@ -52,6 +58,7 @@
 
 
         <EditText
+            android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Your Email"
@@ -63,6 +70,7 @@
 
 
         <EditText
+            android:id="@+id/editTextPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Your Password"
@@ -73,11 +81,12 @@
 
 
         <Button
+            android:id="@+id/buttonSignIn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="SIGN IN"
             android:textAllCaps="false"
-            android:backgroundTint="#3F51B5"
+            android:backgroundTint="@color/dark_blue"
             android:textColor="#FFFFFF"
             android:layout_marginBottom="16dp" />
 
@@ -91,6 +100,7 @@
             android:textSize="14sp" />
 
         <TextView
+            android:id="@+id/textViewRegister"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

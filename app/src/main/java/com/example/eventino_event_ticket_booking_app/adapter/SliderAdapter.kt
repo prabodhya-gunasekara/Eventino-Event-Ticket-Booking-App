@@ -11,7 +11,6 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.example.eventino_event_ticket_booking_app.databinding.ViewholderSliderBinding
 import com.example.eventino_event_ticket_booking_app.models.SliderItem
-import com.google.ai.client.generativeai.common.RequestOptions
 
 class SliderAdapter(private var sliderItem:MutableList<SliderItem>
 ,private val viewPager2:ViewPager2
@@ -28,7 +27,9 @@ class SliderAdapter(private var sliderItem:MutableList<SliderItem>
                 content?.let {
                     Glide.with(it)
                         .load(sliderItem.url)
-                        .apply{RequestOptions().transform(CenterCrop(), RoundedCorners(60))}
+                        .apply{
+                            com.google.ai.client.generativeai.common.RequestOptions()
+                                .transform(CenterCrop(), RoundedCorners(60))}
                         .into(binding.imageSlide)
                 }
             }
@@ -51,4 +52,8 @@ class SliderAdapter(private var sliderItem:MutableList<SliderItem>
             viewPager2.post(runnable)
         }
     }
+}
+
+private fun Any.transform(centerCrop: CenterCrop, roundedCorners: RoundedCorners) {
+
 }

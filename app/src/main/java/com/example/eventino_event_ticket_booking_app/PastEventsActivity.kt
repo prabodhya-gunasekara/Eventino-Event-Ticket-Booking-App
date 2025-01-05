@@ -14,7 +14,7 @@ class PastEventsActivity : AppCompatActivity() {
         val btnViewPastEvent: Button = findViewById(R.id.btn_past_events)
 
         btnViewPastEvent.setOnClickListener {
-            val intent = Intent(this, ViewPastEventDetailsActivity::class.java)
+            val intent = Intent(this, PastEventDetailsActivity::class.java)
             startActivity(intent)
         }
     }

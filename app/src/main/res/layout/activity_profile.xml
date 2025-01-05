@@ -1,137 +1,233 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:id="@+id/main_profile">
+    android:background="#FFFFFF">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <!-- Back Icon Section -->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp">
-
-            <ImageView
-                android:id="@+id/back_icon"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/back"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:contentDescription="Back Icon" />
-
-        </RelativeLayout>
-
-        <!-- Profile Section -->
         <ImageView
-            android:id="@+id/profile_picture"
+            android:id="@+id/backButton"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_arrow_back"
+            android:layout_gravity="start"
+            android:contentDescription="Back Button" />
+
+        <ImageView
+            android:id="@+id/profileImage"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/profile"
             android:layout_gravity="center"
-            android:layout_marginBottom="16dp"
-            />
+            android:scaleType="centerCrop"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp" />
 
         <TextView
-            android:id="@+id/profile_name"
+            android:id="@+id/userName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mary Nguyen"
-            android:textSize="24sp"
+            android:text="Full Name"
+            android:textSize="22sp"
             android:textStyle="bold"
             android:layout_gravity="center"
-            android:layout_marginBottom="16dp" />
-
-        <TextView
-            android:id="@+id/profile_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="marynguyen@gmail.com"
-            android:textSize="16sp"
             android:layout_marginBottom="8dp" />
-
-        <TextView
-            android:id="@+id/profile_phone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="+1 123 456 7890"
-            android:textSize="16sp"
-            android:layout_marginBottom="8dp" />
-
-        <TextView
-            android:id="@+id/profile_country"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="United States"
-            android:textSize="16sp"
-            android:layout_marginBottom="16dp" />
 
         <Button
-            android:id="@+id/edit_profile_button"
+            android:id="@+id/editProfileButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Edit Profile"
             android:layout_gravity="center"
-            android:backgroundTint="@color/blue_navy"
-            android:textColor="@color/white"
-            android:layout_marginBottom="32dp" />
+            android:backgroundTint="@color/dark_blue"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="16dp" />
 
-        <!-- Navigation and Other Buttons -->
-        <Button
-            android:id="@+id/home_button"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="Home"
-            android:layout_marginBottom="8dp"
-            android:backgroundTint="#C1C1E6"
-            android:textColor="#03035D"
-            android:textStyle="bold" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/change_password_button"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="Change Password"
-            android:layout_marginBottom="8dp"
-            android:backgroundTint="#C1C1E6"
-            android:textColor="#03035D"
-            android:textStyle="bold" />
+            <LinearLayout
+                android:id="@+id/homeOptionLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="12dp"
+                android:background="@drawable/field_frame"
+                android:layout_marginBottom="3dp">
 
-        <Button
-            android:id="@+id/privacy_button"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="Privacy and Policies"
-            android:layout_marginBottom="8dp"
-            android:backgroundTint="#C1C1E6"
-            android:textColor="#03035D"
-            android:textStyle="bold" />
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_home"/>
 
-        <Button
-            android:id="@+id/about_app_button"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="About App"
-            android:layout_marginBottom="8dp"
-            android:backgroundTint="#C1C1E6"
-            android:textColor="#03035D"
-            android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/homeOption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Home"
+                    android:textSize="16sp"
+                    android:layout_marginStart="12dp"
+                    android:textColor="#000000" />
+            </LinearLayout>
 
-        <Button
-            android:id="@+id/logout_button"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="Log Out"
-            android:layout_marginBottom="8dp"
-            android:backgroundTint="#C1C1E6"
-            android:textColor="#03035D"
-            android:textStyle="bold" />
+            <LinearLayout
+                android:id="@+id/reservationOptionLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="12dp"
+                android:background="@drawable/field_frame"
+                android:layout_marginBottom="3dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_menu"
+                    android:contentDescription="Reservation Icon" />
+
+                <TextView
+                    android:id="@+id/reservationOption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reservation"
+                    android:textSize="16sp"
+                    android:layout_marginStart="12dp"
+                    android:textColor="#000000" />
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/changePasswordOptionLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="12dp"
+                android:background="@drawable/field_frame"
+                android:layout_marginBottom="15dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_password" />
+
+                <TextView
+                    android:id="@+id/changePasswordOption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Change Password"
+                    android:textSize="16sp"
+                    android:layout_marginStart="12dp"
+                    android:textColor="#000000" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/privacyPoliciesOptionLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="12dp"
+                android:background="@drawable/field_frame"
+                android:layout_marginBottom="3dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_menu"
+                    android:contentDescription="Privacy and Policies Icon" />
+
+                <TextView
+                    android:id="@+id/privacyPoliciesOption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Privacy and Policies"
+                    android:textSize="16sp"
+                    android:layout_marginStart="12dp"
+                    android:textColor="#000000" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/aboutAppOptionLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="12dp"
+                android:background="@drawable/field_frame"
+                android:layout_marginBottom="3dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_menu"
+                    android:contentDescription="About App Icon" />
+
+                <TextView
+                    android:id="@+id/aboutAppOption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="About App"
+                    android:textSize="16sp"
+                    android:layout_marginStart="12dp"
+                    android:textColor="#000000" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/helpOptionLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="12dp"
+                android:background="@drawable/field_frame"
+                android:layout_marginBottom="20dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_menu"
+                    android:contentDescription="Help Us Icon" />
+
+                <TextView
+                    android:id="@+id/helpOption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Help Us"
+                    android:textSize="16sp"
+                    android:layout_marginStart="12dp"
+                    android:textColor="#000000" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/logoutOptionLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="12dp"
+                android:background="@drawable/field_frame"
+                android:layout_marginBottom="8dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_logout"
+                    android:contentDescription="Logout Icon" />
+
+                <TextView
+                    android:id="@+id/logoutOption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Log Out"
+                    android:textSize="16sp"
+                    android:layout_marginStart="12dp"
+                    android:textColor="#0F0E0E" />
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>
